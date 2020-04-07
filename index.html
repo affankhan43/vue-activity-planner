@@ -35,6 +35,10 @@
         <div v-if="isTextDisplayed">
           <h1 v-bind:title="titleMessage">{{message}}</h1>
         </div>
+        <div v-else>
+          Hidden Message
+        </div>
+        <button v-on:click="isTextDisplayed=!isTextDisplayed">Toggle Button</button>
         <div class="columns">
           <div class="column is-3">
             <a class="button is-primary is-block is-alt is-large" href="#">New Activity</a>
@@ -119,6 +123,11 @@
           categories: {
             '1546969049': {text: 'books'},
             '1546969225': {text: 'movies'}
+          }
+        },
+        methods:{
+          yell: function(){
+            alert('YellAAAAAAAAAAAAAA');
           }
         }
       });
