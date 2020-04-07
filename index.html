@@ -34,7 +34,7 @@
       <section class="container">
         <div class="columns">
           <div class="column is-3">
-            <a @click="dispalyForm" class="button is-primary is-block is-alt is-large" href="#">New Activity</a>
+            <a v-if="!isFormDisplayed" @click="dispalyForm" class="button is-primary is-block is-alt is-large" href="#">New Activity</a>
             <div class="create-form" v-if="isFormDisplayed">
               <h2>Create Activity</h2>
               <form>
@@ -44,9 +44,16 @@
                     <input v-model="newActivity.title" class="input" type="text" placeholder="Read a Book">
                   </div>
                 </div>
+                <div class="field">
+                  <label class="label">Notes</label>
+                  <div class="control">
+                    <textarea v-model="newActivity.notes"  class="textarea" placeholder="Write Some Notes Here"></textarea>
+                  </div>
+                </div>
                 <div class="field is-grouped">
                   <div class="control">
-                    <button class="button is-link">Create Goal</button>
+                    <button @click="createActivity" class="button is-link">Create Goal</button>
+                    <button class="button is-text" @click="dispalyForm">Cancel</button>
                   </div>
                 </div>
               </form>
@@ -73,7 +80,7 @@
           isTextDisplayed: true,
           isFormDisplayed: false,
           items: {1:{name:"affan"},2:{name:"khan"},3:{name:"ahmed"}},
-          newActivity: {title:''},
+          newActivity: {title:'',notes:''},
           user: {
             name: 'Filip Jerga',
             id: '-Aj34jknvncx98812',
@@ -107,6 +114,10 @@
           },
           dispalyForm(){
             this.isFormDisplayed = !this.isFormDisplayed;
+          },
+          createActivity(){
+            //preventDefault();
+            console.log(this.newActivity)
           }
         }
       });
